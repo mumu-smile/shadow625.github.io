@@ -3,6 +3,7 @@ title: "shadow"
 email: jacob@jacobtomlinson.co.uk
 description: "A dark blog theme for Jekyll."
 baseurl: ""
+author:"shadow"
 url: "http://shadow625/shadow625.github.io.git"
 title_image: "image/IMG_2916.jpg"
 google_analytics: "UA-20365477-4"

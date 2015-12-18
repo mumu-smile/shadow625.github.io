@@ -1,5 +1,6 @@
 ---
-title:  "Nobody else was around."
+layout: post
+title:  django_road
 subtitle: "django learning"
 author: "Shadow"
 avatar: "image/IMG_2916.jpg"
@@ -8,7 +9,7 @@ date:   2015-04-21 12:12:12
 ---
 
 #0x00：开始接触
-在刚开学python时遇到有很多特别火的开源工程，其中有个名字特别古怪，很吸引我的注意，django 想不通为什么叫这么一个名字，就在网上查了一下，发现是个挺火的项目呢。哦 做网站的，嗯 刚好这两天学了HTML，也想把学的发布到网上。说着就玩起来了，不得不说，配环境是我最烦的了，前前后后总共花了我7天才把环境配好。然后看着网上的简单教程敲了一下，然后./manag.py runserver 0.0.0.0:8080 。done！ 这样我就可以在手机，各个地方查看我自己的网页了。嗯有的玩，快考试了有时间再看吧。
+在刚开学python时遇到有很多特别火的开源工程，其中有个名字特别古怪，很吸引我的注意，`django` 想不通为什么叫这么一个名字，就在网上查了一下，发现是个挺火的项目呢。哦 做网站的，嗯 刚好这两天学了HTML，也想把学的发布到网上。说着就玩起来了，不得不说，配环境是我最烦的了，前前后后总共花了我7天才把环境配好。然后看着网上的简单教程敲了一下，然后./manag.py runserver 0.0.0.0:8080 。done！ 这样我就可以在手机，各个地方查看我自己的网页了。嗯有的玩，快考试了有时间再看吧。
 #0x01： 进一步学习
 here we come the point that really matter. 
 这两天没事就仔细看了一下django book https://django-book.readthedocs.org/en/latest/index.html 
