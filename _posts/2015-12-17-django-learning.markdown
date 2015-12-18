@@ -4,7 +4,6 @@ title:  django_road
 subtitle: "django learning"
 author: "Shadow"
 avatar: "image/IMG_2916.jpg"
-
 date:   2015-12-17 12:12:12
 ---
 
