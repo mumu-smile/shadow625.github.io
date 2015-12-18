@@ -1,16 +1,16 @@
 # Site settings
-title: "shadow"
-email: jacob@jacobtomlinson.co.uk
-description: "A dark blog theme for Jekyll."
+title: "Carte Noire"
+email: wangpc625@gmail.com
+description: "stay hungry,stay foolish"
 baseurl: ""
-author:"shadow"
-url: "http://shadow625/shadow625.github.io.git"
+url: "http://shadow625.github.io/"
+title_description: "A blog that records the growth of a single dog"
 title_image: "image/IMG_2916.jpg"
 google_analytics: "UA-20365477-4"
 disqus_account: cartenoire
-github_repository: https://shadow625/shadow625.github.io.git
-addthis_id: ra-513c6fa83da6ec67
-post_limit: 5
+github_repository: https://github.com/shadow625
+addthis_id: ""
+post_limit: 10
 
 # Social usernames/URLs
 twitter_username: shadow
