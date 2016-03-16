@@ -1,5 +1,5 @@
 # Site settings
-title: "Carte Noire"
+title: "shadow"
 email: wangpc625@gmail.com
 description: "stay hungry,stay foolish"
 baseurl: ""
@@ -7,7 +7,7 @@ url: "http://shadow625.github.io/"
 title_description: "A blog that records the growth of a single dog"
 title_image: "image/IMG_2916.jpg"
 google_analytics: "UA-20365477-4"
-disqus_account: cartenoire
+disqus_account: shadowgrand
 github_repository: https://github.com/shadow625
 addthis_id: ""
 post_limit: 10
