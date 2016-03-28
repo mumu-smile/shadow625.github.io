@@ -1,0 +1,5 @@
+>>记录Android 高德lbs平台学习经验
+
+
+在布局中构造一个mapview 这是高德地图的显示view，
+AMap 是管理的类。
