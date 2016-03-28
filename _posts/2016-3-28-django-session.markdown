@@ -8,6 +8,7 @@ thumbnail: fa-anchor
 date:   2016-3-28 12:30:30
 tag:django
 ---
+
 # django笔记
 http 建模 ：描述django响应过程。
 
