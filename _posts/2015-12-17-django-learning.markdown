@@ -19,4 +19,4 @@ here we come the point that really matter.
 "Writing Python is fun, and keeping everything in Python limits the number of times your brain has to do a “context switch.” It helps productivity if you keep yourself in a single programming environment/mentality for as long as possible. Having to write SQL, then Python, and then SQL again is disruptive."
 经常的进行上下文切换是我一直以来相信也是很多人的苦痛，总是在做完sql然后又忘记python应该怎么写了。通过这个封装使得我没不用去思考sql该怎么写，只要知道要怎么去处理这些数据就可以了。
 使用models，我们需要先进行install_app 就像是注册一样，类似于Android的permission 声明一样，证明这个app有models等的使用权限。然后再app目录下的models.py 下对声明各个model 然后执行migrate ？？ 将model设置应用到数据库中去。
-先写到这里，又饿又困，night
+

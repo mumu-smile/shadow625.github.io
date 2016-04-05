@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  django_roa
+title:  django_road-session
 subtitle: "django learning"
 author: "Shadow"
 avatar: "image/IMG_2916.jpg"
