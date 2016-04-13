@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>network-arp欺骗</title>
+<meta name="description" content="stay hungry,stay foolish">
+
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>shadow</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="http://www.twitter.com/" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://shadow625.github.io" target="_new"><i class="fa fa-linkedin"></i></a>
+  <a href="https://plus.google.com/u/0/115616945666848752661" target="_new"><i class="fa fa-google-plus"></i></a>
+  <a href="https://github.com/shadow625" target="_new"><i class="fa fa-github-alt"></i></a>
+  <a href="http://stackoverflow.com/users/5461353/shadow" target="_new"><i class="fa fa-stack-overflow"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <i class="fa fa-fa-anchor fa-4x"></i>
+      </div>
+      
+
+      <h1 class="header" itemprop="name">network-arp欺骗</h1>
+
+      <div class="author">
+        <small><i>
+          
+          by
+          <span itemprop="author">
+            
+              <a rel="author" href="https://plus.google.com/u/0/115616945666848752661">
+            
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">Shadow</span>
+            </span>
+            
+              </a>
+            
+          </span>
+          
+          on <span itemprop="datePublished" content="2014-08-28">April 3, 2016</span>
+          
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          1 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+        <span itemprop="articleBody"><p>如果你有个路由器，你能做什么。
+     家用路由器现在几乎是每个人家中必不可少的一个设备，也是让智能手机用户非常感动的一个设备（流量不用钱了），但是在享受这些网络设备带给我们便捷的同时，网路安全也同时在影响着你，·处在互联网合适位置的人，能够产生巨大的影响力·，这是一个非常严肃的话题。（好吧，扯远了）
+     今天希望介绍一下ARP 欺骗使得抓取路由器所承载用户的数据包（Android分析用到的，在这里整理一下，分享出来）
+     首先我们需要来介绍一下ARP协议，
+          &gt;全名为address resolution protocol
+          是用于进行地址解析，在一个交换网络中，希望通过局域网交换机发送数据给另一个终端，我们需要该终端的物理地址以及逻辑地址，但是加入现在你只知道IP地址而没有Mac地址，怎么办。我们是不是可以设想两种解决方法，</p>
+
+<p>1.在每个网络设备中存一张表，每个局域网中的IP Mac 都记录下来，然后不再变化。到时候想发给谁直接查找表，然后寻找，发送。done····结果 这中间存在问题，IP地址属于一个设备在互联网中的一个逻辑地址，而Mac 地址（物理地址）他是固化在网卡上的，所以 可想而知，这个IP Mac 组合是一个会变化的事件，一旦加入新的网络设备，或者某个网络设备离开，然后回来，都会使得这个表无能为力。所以，前人使用了一个动态的方法做这个事情。</p>
+
+<p>2.每个设备都维护着一张表，记录了IP Mac组合，感觉是不是和上一个差不多，区别在后面，这是个可以变化的表，每当需要向某个设备发送信息时（包括路由器，后面会介绍相关的安全问题）会寻找这个表格，而当表中没有该元素时，这个时候他就会急了，他需要知道这个IP地址所对应的物理地址是多少啊，不然他没法发送啊，所以他就大声喊叫（发送广播消息）询问该局域网中谁具有该IP地址，所有人都会收到这个消息，然后和自己的IP比对，发现是在问自己，他就会在发送一个回信给那个发送设备，并附上自己的IP地址和Mac地址，就是告诉他 你发到这里来吧。否则丢弃该消息。然后设备会在一定时间后刷新一次这个表，即就是更新一次表的内容。 以上就是描述了一个ARP协议工作流程，翻译为术语则是 A设备希望给B设备发送消息，但是只有B的IP地址，则A会寻找自己的ARP表中B的信息，如果没有就会通过ARP协议获得，并填入ARP表，首先A发送一个ARP广播（通过路由器），向局域网内所有设备询问谁具有该IP地址，每个人收到该消息后，会检查自己的IP和消息中需要的IP是否一致， 如果不一致则丢弃。假如B收到，发现是询问自己的IP的，那么他就会向A发送一个ARP回复消息，这条消息以单播形式发送，告诉A自己的IP地址和Mac地址，然后结束。</p>
+
+<p>3.然而当时网络协议的设计都认为每个人都是善良纯洁的，都是无害的上网（大量事实表明······），导致该协议极不安全，·处于网络合适位置的恶意上网者，能够产生很恶劣的后果。·如果一个恶意的第三方C，收到了不是指向自己的ARP消息（因为是广播，所有交换域内的人都会收到）没有丢弃而是解读然后发送回信，告诉A 你想要B的Mac地址是吧，他的地址是（C的Mac）则就会产生消息误发。假如C收到了以后帮你转发给B（可能叫包内容改写）则会引发中间人攻击，假如不转发，则称为消息劫持。（同称ARP欺骗）</p>
+
+<p>我们现在希望抓到Android的数据包，那么可以通过这种方法欺骗Android设备，将我们的设备作为网关，消息通过我们转发给网关。则就可以抓去Android的数据了。</p>
+</span>
+
+        
+        <div class="share">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+          <div class="addthis_sharing_toolbox"></div>
+        </div>
+        
+
+        
+
+      </div>
+
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on <a href="http://weibo.com/3882071257/profile"><i class="fa fa-weibo"></i>weibo</a> or leave a comment below!
+      </div>
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//shadowgrand.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made by <a href="https://twitter.com/_JacobTomlinson">Jacob Tomlinson</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/jacobtomlinson/carte-noire">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20365477-4']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

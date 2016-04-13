@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shadow</title>
+    <description>stay hungry,stay foolish</description>
+    <link>http://shadow625.github.io//</link>
+    <atom:link href="http://shadow625.github.io//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 13 Apr 2016 17:10:34 +0800</pubDate>
+    <lastBuildDate>Wed, 13 Apr 2016 17:10:34 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>jekyll——安装过程及界面定制</title>
+        <description>&lt;p&gt;用jekyll好久了（好吧一直是通过github-page简介用的）今天终于在自己的电脑上搭好了Jekyll的本地环境（你问我装了多长时间： 6个月你信不信）在这里记录下Jekyll的搭建和使用的一些经验吧
+首先我是在github—pages 上第一次接触Jekyll 
+当时正想搭建一个博客平台，但是感觉wordpress太low（应该就是了解不深导致印象不好吧），自己写前段改代码又太菜，这时实验室同桌在搞的一个博客界面吸引了我的眼球，界面很清新，功能不多不少，正是我脑海中完美的一个博客环境，（对，没错 我就是那个时候才知道有github-pages这个东西）而且有很多漂亮的开源模板可以使用（不信是吧，来看看&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;&lt;em&gt;Jekyll主题&lt;/em&gt;&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll&quot;&gt;安装Jekyll&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;github主页就是通过Jekyll渲染的，也就是说在他的后台肯定是配备了一个Jekyll环境，我们现在就是试图在本地搭建一个一模一样的环境，用于本地测试。当然你要是一片markdown错误率能保持在0以下，那么这环境就是多余的了。（想想应该不可能呢，因为你还有耐心在看这篇文，说明我们俩水平差不多吧）
+  根据&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;&lt;em&gt;Jekyll官网&lt;/em&gt;&lt;/a&gt;给的简单的示例。
+    &lt;pre&gt;&lt;code&gt;  $ gem install jekyll
+  $ jekyll new my-awesome-site
+  $ cd my-awesome-site
+  $ jekyll serve&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;然而事实并没有那么简单在我执行第一步的时候就卡住了，发现Mac是自带Ruby的，我就直接输入命令泡好茶等结果，然后发现他一直执行不出来，然后就开始查（此处省略好多字）
+&lt;img src=&quot;/image/gem_no_response.png&quot; alt=&quot;no_response&quot; /&gt;
+最后知道，需要执行&lt;code class=&quot;highlighter-rouge&quot;&gt;gem update --system &lt;/code&gt;（什么鬼，感觉就像yum的更新源吧）然后执行Jekyll安装就顺利了。（还是没有反应的话借个梯子试试）
+后面的事情就很轻松了，如果这个时候你在上面选好了你的界面模板，那就git clone过来，在模板根目录下直接&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll serve&lt;/code&gt;就可以在本地访问你的准博客界面了。
+##界面定制
+这个我并不是前端专家，但是模板都有了，做一些改动的话还是很轻松的嘛。
+如果你有过django开发经历处理这个就太简单了。他们两个之间的差异很小，上手很容易。现在来介绍一下他的目录结构
+    &lt;pre&gt;&lt;code calss=&quot;html&quot;&gt;.
+  |── _config.yml
+  |── _drafts
+  |   |── begin-with-the-crazy-ideas.textile
+  |   |── on-simplicity-in-technology.markdown
+  |── _includes
+  |   |── footer.html
+  |   |── header.html
+  |── _layouts
+  |   |── default.html
+  |   |── post.html
+  |── _posts
+  |   |── 2007-10-29-why-every-programmer-should-play-nethack.textile
+  |   |── 2009-04-26-barcamp-boston-4-roundup.textile
+  |── _site
+  |── .jekyll-metadata
+  |── index.html
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 12 Apr 2016 20:12:12 +0800</pubDate>
+        <link>http://shadow625.github.io//2016/04/12/jekyll-start/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2016/04/12/jekyll-start/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>android安全狗</title>
+        <description>&lt;h1 id=&quot;androidsdk-&quot;&gt;android第三方SDK 分析初探&lt;/h1&gt;
+
+&lt;p&gt;近期在学习Android 第三方SDK安全，希望通过分析具体程序得出该SDK的安全问题（比如与服务器之间的不安全通信，对于本机信息的非法获取等等），这样的问题往往影响面较大，涉及用户较多。
+主要分析方案可以总结为两种方向:
+ * 通过使用该SDK的apk入手，根据官方提供的Demo 检查安全问题。
+ * 根据官方提供的SDK以及文档查看是否存在问题。
+首先 我们来介绍一下第一种方案： 一般的第三方SDK提供方为了更好的展示功能都会写一个Demo apk 希望能想开发者提供更加良好的服务，这也正好给我们更加良好的分析环境，这类apk主要围绕SDK功能展开没有其他功能，正好是我们需要的。
+我们可以通过该apk进行静动结合和分析手法.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;静态分析&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;apk解包  如果只需要里面的manifest文件  可以直接通过更改文件后缀为rar zip 解压就能得到&lt;/li&gt;
+  &lt;li&gt;反编译  现在有许多流行的apk分析工具能够做到，其中较为突出的就是smali和baksmali（一个编译一个反编译），其他很多都是基于他们做的例如apktools ，总之通过工具将apk或者dex反编译得到smali，这一步就可以做很多有意思的事情，比如可以通过grep 查找像URL等信息，可以让我们更好的理解app与服务器之间的通信信息，&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -Eir “https?://“ XX(dir)/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;通过手动的方法获取信息 一开始还是很有意思的，但是马上你就会厌烦，因为这样看到的信息太杂太多，于是你在想是不是有一个工具能帮你把信息归好类，最好存在一个数据结构中方便查取，于是我们有了androguard  一个神奇的工具，这是一个基于Python做的Android静态分析集成工具，他的强大超过你的想象，不信的话可以去试试。我们这里需要的是androlyze.py 他提供了一个ipython shell。通过他你可以知道这个APP都申请了哪些权限，和这些权限在哪里使用了，即就是在哪里调用的方法。还有很多，我们这里主要想知道这些。&lt;/li&gt;
+  &lt;li&gt;通过这些使用的权限，我们检查该APP是否存在安全问题，比如在他使用了网络的位置，查看其与服务器之间的交互方式，对于敏感信息是否进行了加密，是否有证书验证错误处理，在不同网络上的安全传输方式是否一致等等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;动态分析暂时还没做完 就先不写了。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Apr 2016 20:12:12 +0800</pubDate>
+        <link>http://shadow625.github.io//2016/04/05/android-sdksecurity/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2016/04/05/android-sdksecurity/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>network-arp欺骗</title>
+        <description>&lt;p&gt;如果你有个路由器，你能做什么。
+     家用路由器现在几乎是每个人家中必不可少的一个设备，也是让智能手机用户非常感动的一个设备（流量不用钱了），但是在享受这些网络设备带给我们便捷的同时，网路安全也同时在影响着你，·处在互联网合适位置的人，能够产生巨大的影响力·，这是一个非常严肃的话题。（好吧，扯远了）
+     今天希望介绍一下ARP 欺骗使得抓取路由器所承载用户的数据包（Android分析用到的，在这里整理一下，分享出来）
+     首先我们需要来介绍一下ARP协议，
+          &amp;gt;全名为address resolution protocol
+          是用于进行地址解析，在一个交换网络中，希望通过局域网交换机发送数据给另一个终端，我们需要该终端的物理地址以及逻辑地址，但是加入现在你只知道IP地址而没有Mac地址，怎么办。我们是不是可以设想两种解决方法，&lt;/p&gt;
+
+&lt;p&gt;1.在每个网络设备中存一张表，每个局域网中的IP Mac 都记录下来，然后不再变化。到时候想发给谁直接查找表，然后寻找，发送。done····结果 这中间存在问题，IP地址属于一个设备在互联网中的一个逻辑地址，而Mac 地址（物理地址）他是固化在网卡上的，所以 可想而知，这个IP Mac 组合是一个会变化的事件，一旦加入新的网络设备，或者某个网络设备离开，然后回来，都会使得这个表无能为力。所以，前人使用了一个动态的方法做这个事情。&lt;/p&gt;
+
+&lt;p&gt;2.每个设备都维护着一张表，记录了IP Mac组合，感觉是不是和上一个差不多，区别在后面，这是个可以变化的表，每当需要向某个设备发送信息时（包括路由器，后面会介绍相关的安全问题）会寻找这个表格，而当表中没有该元素时，这个时候他就会急了，他需要知道这个IP地址所对应的物理地址是多少啊，不然他没法发送啊，所以他就大声喊叫（发送广播消息）询问该局域网中谁具有该IP地址，所有人都会收到这个消息，然后和自己的IP比对，发现是在问自己，他就会在发送一个回信给那个发送设备，并附上自己的IP地址和Mac地址，就是告诉他 你发到这里来吧。否则丢弃该消息。然后设备会在一定时间后刷新一次这个表，即就是更新一次表的内容。 以上就是描述了一个ARP协议工作流程，翻译为术语则是 A设备希望给B设备发送消息，但是只有B的IP地址，则A会寻找自己的ARP表中B的信息，如果没有就会通过ARP协议获得，并填入ARP表，首先A发送一个ARP广播（通过路由器），向局域网内所有设备询问谁具有该IP地址，每个人收到该消息后，会检查自己的IP和消息中需要的IP是否一致， 如果不一致则丢弃。假如B收到，发现是询问自己的IP的，那么他就会向A发送一个ARP回复消息，这条消息以单播形式发送，告诉A自己的IP地址和Mac地址，然后结束。&lt;/p&gt;
+
+&lt;p&gt;3.然而当时网络协议的设计都认为每个人都是善良纯洁的，都是无害的上网（大量事实表明······），导致该协议极不安全，·处于网络合适位置的恶意上网者，能够产生很恶劣的后果。·如果一个恶意的第三方C，收到了不是指向自己的ARP消息（因为是广播，所有交换域内的人都会收到）没有丢弃而是解读然后发送回信，告诉A 你想要B的Mac地址是吧，他的地址是（C的Mac）则就会产生消息误发。假如C收到了以后帮你转发给B（可能叫包内容改写）则会引发中间人攻击，假如不转发，则称为消息劫持。（同称ARP欺骗）&lt;/p&gt;
+
+&lt;p&gt;我们现在希望抓到Android的数据包，那么可以通过这种方法欺骗Android设备，将我们的设备作为网关，消息通过我们转发给网关。则就可以抓去Android的数据了。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 03 Apr 2016 20:12:12 +0800</pubDate>
+        <link>http://shadow625.github.io//2016/04/03/network-arpspoofing/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2016/04/03/network-arpspoofing/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>git游记</title>
+        <description>&lt;p&gt;#0x00
+ 今天刚换的主题，本想着花两个小时把之前没写好的django补一下，结果发现git一直有问题（问题在于我），于是就弱弱的打开了chrome，进行git补习
+ ，看了很多篇文章，从很多个碎片整合出来一个结果，以前理解的git 都不对。
+#0x01
+ 现在来说一下我对git的大体理解（极其片面，勿喷）。git 一个版本控制工具，能让你或者你的团队能一起受到制约的共同开发，而github只是一个远程的服务器，
+ 进行版本托管的工具。我们需要进行的主要操作就是从远程服务器（即你的github仓库）获取（&lt;code class=&quot;highlighter-rouge&quot;&gt;pull&lt;/code&gt;）代码，或者你把你更改过的代码上传（&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;）到服务器（或者同一个团队的成员）
+ 中间会有一些辅助操作
+1.在本地建立控制空间（&lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt;）（新建一个本地仓库，存储下载下来的远程代码）
+2.将你的想要更改的加入到git的一个数据结构中（&lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt;），等待确认提交。
+3.确认提交更改（&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;）只是代码还是在本地，知道执行了push命令。&lt;/p&gt;
+
+&lt;p&gt;现在从头开始一次项目。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt; 
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add origin git@github.com:shadow625/shadow625.github.io.git&lt;/code&gt;这里就相当于一次赋值过程，将这个远程的github地址赋给origin ，以后origin就代表这个地址，是我们取
+  同步代码等的键击量减少了很多。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone origin master&lt;/code&gt;这意味着将origin代表的远程仓库的master分支的代码克隆到当前工作目录下。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git add A|./&lt;/code&gt; 当你更改代码并在本地进行了测试后 就应该执行这一条指令了，现在还不懂原理，应该是git会把这些可能会被更改的文件存入一个数据结构，或者文件。然后当你确认提交后，就会将这些更改应用到远端&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m “something you wanna say to remind you incase”&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -a&lt;/code&gt;将所有全部提交
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git push -u origin master&lt;/code&gt; 我遇到的问题就是在这里 由于之前不知道，我就直接使用了git push，然后他就直接将代码同步到他的默认分支：gh-pages
+但是github的博客文件是从master分支下读取的，所以导致我的更改一直没有效。当时都快看疯了，
+  完成了 这就是我的体会了。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 19 Dec 2015 08:04:10 +0800</pubDate>
+        <link>http://shadow625.github.io//2015/12/19/git-log/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2015/12/19/git-log/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>django_road-session</title>
+        <description>&lt;h1 id=&quot;django&quot;&gt;django笔记&lt;/h1&gt;
+&lt;p&gt;http 建模 ：描述django响应过程。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;web服务器收到一个http请求（Apache 收到一个Post请求，通过什么传给django）&lt;/li&gt;
+  &lt;li&gt;Django 把web服务器传过来的请求转换成一个请求对象。（django将请求转换成request对象）&lt;/li&gt;
+  &lt;li&gt;Django 在 URLconf 里查找正确的视图函数（生成的request对象&amp;lt;中间包括Post/Get消息&amp;gt;传入对应的view文件里的view函数  如home，index ）&lt;/li&gt;
+  &lt;li&gt;调用这个视图函数，参数为请求对象以及任何捕捉到的url 参数（这个视图函数将request进行解析，响应，在这一步进行的有，响应POST消息，查询数据库，并进行返回，动态生成网页：将中间的变量进行填充，渲染返回一个完整的HTML页面，）&lt;/li&gt;
+  &lt;li&gt;然后试图会创建并返回一个响应对象&lt;/li&gt;
+  &lt;li&gt;django讲这个响应对象转换成web服务器可以理解的格式&lt;/li&gt;
+  &lt;li&gt;web服务器将响应发送给客户端。（返回相应的html网页给客户端）
+这个时候：我们有一个问题，如果希望实现登录功能怎么办，django是否提供该功能。
+&amp;gt;事实证明django非常强大，回忆起来当时新建app的时候sync 数据库产生了好几个user group 数据库表，现在才知道，django 将用户与app绑定，进行权限控制，每一个没有经过登录认证的用户被视为anonymous user，可以为每一个用户赋予权限。
+这时候你肯定也产生了另一个疑问，登录认证怎么办，cookie和session应该怎么处理，&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 17 Dec 2015 20:12:12 +0800</pubDate>
+        <link>http://shadow625.github.io//2015/12/17/django-session/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2015/12/17/django-session/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>django_road</title>
+        <description>&lt;p&gt;#0x00：开始接触
+在刚开学python时遇到有很多特别火的开源工程，其中有个名字特别古怪，很吸引我的注意，&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 想不通为什么叫这么一个名字，就在网上查了一下，发现是个挺火的项目呢。哦 做网站的，嗯 刚好这两天学了HTML，也想把学的发布到网上。说着就玩起来了，不得不说，配环境是我最烦的了，前前后后总共花了我7天才把环境配好。然后看着网上的简单教程敲了一下，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;./manag.py runserver 0.0.0.0:8080&lt;/code&gt; 。done！ 这样我就可以在手机，各个地方查看我自己的网页了。嗯有的玩，快考试了有时间再看吧。&lt;/p&gt;
+
+&lt;p&gt;#0x01： 进一步学习
+here we come the point that really matter. 
+这两天没事就仔细看了一下django book https://django-book.readthedocs.org/en/latest/index.html 
+第一次写博客，没有什么特别的思路，就把自己对于models的功能的理解写一下。
+根据django的mvc设计模式，models 适用于进行数据的控制的。通过models我们可以简单快速的进行数据库的操作，django book的作者对于这个设计提了很多优点，其中有一个我很赞同
+“Writing Python is fun, and keeping everything in Python limits the number of times your brain has to do a “context switch.” It helps productivity if you keep yourself in a single programming environment/mentality for as long as possible. Having to write SQL, then Python, and then SQL again is disruptive.”
+经常的进行上下文切换是我一直以来相信也是很多人的苦痛，总是在做完sql然后又忘记python应该怎么写了。通过这个封装使得我没不用去思考sql该怎么写，只要知道要怎么去处理这些数据就可以了。
+使用models，我们需要先进行install_app 就像是注册一样，类似于Android的permission 声明一样，证明这个app有models等的使用权限。然后再app目录下的models.py 下对声明各个model 然后执行migrate ？？ 将model设置应用到数据库中去。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 17 Dec 2015 20:12:12 +0800</pubDate>
+        <link>http://shadow625.github.io//2015/12/17/django-learning/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2015/12/17/django-learning/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
