@@ -5,8 +5,8 @@
     <description>stay hungry,stay foolish</description>
     <link>http://shadow625.github.io//</link>
     <atom:link href="http://shadow625.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 13 Apr 2016 17:10:34 +0800</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2016 17:10:34 +0800</lastBuildDate>
+    <pubDate>Mon, 18 Apr 2016 20:11:47 +0800</pubDate>
+    <lastBuildDate>Mon, 18 Apr 2016 20:11:47 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -18,7 +18,7 @@
 &lt;h3 id=&quot;jekyll&quot;&gt;安装Jekyll&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;github主页就是通过Jekyll渲染的，也就是说在他的后台肯定是配备了一个Jekyll环境，我们现在就是试图在本地搭建一个一模一样的环境，用于本地测试。当然你要是一片markdown错误率能保持在0以下，那么这环境就是多余的了。（想想应该不可能呢，因为你还有耐心在看这篇文，说明我们俩水平差不多吧）
-  根据&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;&lt;em&gt;Jekyll官网&lt;/em&gt;&lt;/a&gt;给的简单的示例。
+根据&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;&lt;em&gt;Jekyll官网&lt;/em&gt;&lt;/a&gt;给的简单的示例。
     &lt;pre&gt;&lt;code&gt;  $ gem install jekyll
   $ jekyll new my-awesome-site
   $ cd my-awesome-site
@@ -51,10 +51,34 @@
 &lt;/code&gt;&lt;/pre&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;目录分析&lt;/h3&gt;
+
+&lt;p&gt;​	根目录下有一个_config.yml 文件 用于存储你的页面的渲染设置，或者你的一些将在全站用到的一些信息条目，例如你的名字，个人网址，以及markdown类型。&lt;/p&gt;
+
+&lt;p&gt;​	然后是_includes 类似于django的模板嵌套，Jekyll支持多个模块拼凑出一个完整的页面，例如在例子中出现的footer.html 将作为页面的最下面的一部分出现，他对于页面的贡献由你决定，为了方便管理与查找，每个人都会养成一个自己的习惯，在header中存放script、CSS等文件引用，footer中存放一些页面内的js脚本。可以抽象的理解为 _include 中的文件都是一个个装饰模块，而外部的index.html就是一个房子的框架，将一个个装饰模块填充在房子的框架上，就能盖成一个完美的房子。&lt;/p&gt;
+
+&lt;p&gt;​	而处于_layout 下的文件顾名思义为布局文件，你希望你的不同类的页面能通过不同的界面显示，而这就由布局文件决定的，通过定义不同的布局文件可以实现上述目的。&lt;/p&gt;
+
+&lt;p&gt;​	下一个post文件夹 就是这个站的主体，你的文章所在的位置了。每一篇文章由markdown书写，Jekyll自带···markdown解释器。&lt;/p&gt;
+
+&lt;p&gt;​	这就是整个目录树比较重要的几个部分了。&lt;/p&gt;
+
 </description>
-        <pubDate>Tue, 12 Apr 2016 20:12:12 +0800</pubDate>
-        <link>http://shadow625.github.io//2016/04/12/jekyll-start/</link>
-        <guid isPermaLink="true">http://shadow625.github.io//2016/04/12/jekyll-start/</guid>
+        <pubDate>Fri, 15 Apr 2016 20:12:12 +0800</pubDate>
+        <link>http://shadow625.github.io//2016/04/15/jekyll-start/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2016/04/15/jekyll-start/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>hello</title>
+        <description>
+</description>
+        <pubDate>Wed, 13 Apr 2016 09:01:01 +0800</pubDate>
+        <link>http://shadow625.github.io//2016/04/13/subject-ourteam/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2016/04/13/subject-ourteam/</guid>
         
         
       </item>
