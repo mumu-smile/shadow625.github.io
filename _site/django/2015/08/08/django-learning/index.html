@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404</title>
+<title>django-road</title>
 <meta name="description" content="stay hungry,stay foolish">
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -70,54 +70,124 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="container-fluid index error">
+      
+
+<div class="container-fluid single">
   <div class="row">
 
-    <div class="col-md-12 content-panel articles">
-      <h1 class="header author-header">404</h1>
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="" alt="Thumbnail: jekyll" />
+      </div>
+      
 
-      <div class="error-text">
-        Sorry but this page doesn't seem to exist.
+      <h1 class="header" itemprop="name">django-road</h1>
+
+      <div class="author">
+        <small><i>
+          
+          by
+          <span itemprop="author">
+            
+              <a rel="author" href="https://plus.google.com/u/0/115616945666848752661">
+            
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">shadow</span>
+            </span>
+            
+              </a>
+            
+          </span>
+          
+          on <span itemprop="datePublished" content="2014-08-28">August 8, 2015</span>
+           under django
+        </i></small>
       </div>
 
-      <div class="error-text">
-        <a href="/">Home</a> |
-        <a href="/posts/">All Posts</a> |
-        <a href="/search/">Search</a>
+      <div class="read-time">
+        <small>
+          1 minute read
+        </small>
       </div>
 
-      <p class="links">
-  <a href="http://www.twitter.com/" target="_new"><i class="fa fa-twitter"></i></a>
-  <a href="https://shadow625.github.io" target="_new"><i class="fa fa-linkedin"></i></a>
-  <a href="https://plus.google.com/u/0/115616945666848752661" target="_new"><i class="fa fa-google-plus"></i></a>
-  <a href="https://github.com/shadow625" target="_new"><i class="fa fa-github-alt"></i></a>
-  <a href="http://stackoverflow.com/users/5461353/shadow" target="_new"><i class="fa fa-stack-overflow"></i></a>
-  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
-</p>
+      <div class="content-panel content">
+        <span itemprop="articleBody"><h3 id="x00">0x00：开始接触</h3>
+<p>在刚开学python时遇到有很多特别火的开源工程，其中有个名字特别古怪，很吸引我的注意，<code class="highlighter-rouge">django</code> 想不通为什么叫这么一个名字，就在网上查了一下，发现是个挺火的项目呢。哦 做网站的，嗯 刚好这两天学了HTML，也想把学的发布到网上。说着就玩起来了，不得不说，配环境是我最烦的了，前前后后总共花了我7天才把环境配好。然后看着网上的简单教程敲了一下，然后<code class="highlighter-rouge">./manag.py runserver 0.0.0.0:8080</code> 。done！ 这样我就可以在手机，各个地方查看我自己的网页了。嗯有的玩，快考试了有时间再看吧。</p>
 
+<h3 id="x01-">0x01： 进一步学习</h3>
+<p>HERE we come the point that really matter. 
+这两天没事就仔细看了一下<a href="https://django-book.readthedocs.org/en/latest/index.html"><em>django book</em></a> <br />
+第一次写博客，没有什么特别的思路，就把自己对于models的功能的理解写一下。
+根据django的mvc设计模式，models 适用于进行数据的控制的。通过models我们可以简单快速的进行数据库的操作，django book的作者对于这个设计提了很多优点，其中有一个我很赞同</p>
+
+<p>“Writing Python is fun, and keeping everything in Python limits the number of times your brain has to do a “context switch.” It helps productivity if you keep yourself in a single programming environment/mentality for as long as possible. Having to write SQL, then Python, and then SQL again is disruptive.”<br />
+经常的进行上下文切换是我一直以来相信也是很多人的苦痛，总是在做完sql然后又忘记python应该怎么写了。通过这个封装使得我没不用去思考sql该怎么写，只要知道要怎么去处理这些数据就可以了。<br />
+使用models，我们需要先进行install_app 就像是注册一样，类似于Android的permission 声明一样，证明这个app有models等的使用权限。然后再app目录下的models.py 下对声明各个model 然后执行migrate ？？ 将model设置应用到数据库中去。</p>
+
+</span>
+
+        
+        <div class="share">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+          <div class="addthis_sharing_toolbox"></div>
+        </div>
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            thumbnails, shadow grand
+          </small>
+        </div>
+        
+
+      </div>
+
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on <a href="http://weibo.com/3882071257/profile"><i class="fa fa-weibo"></i>weibo</a> or leave a comment below!
+      </div>
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      
+
+      
 
     </div>
 
   </div>
 
-  <div class="content-panel related">
-    
-      <div class="related-header">
-        <a href="/django/2016/04/19/minStack/">Suggested Article</a>
-      </div>
-      <div class="title">
-        <a href="/django/2016/04/19/minStack/">min stack-java</a>
-      </div>
-      <div class="excerpt">
-         
-          leetcode 155
-         
-        <a href="/django/2016/04/19/minStack/">Continue Reading</a>
-      </div>
-    
-  </div>
-
 </div>
+
+
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//shadowgrand.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
 
       </div>
     </div>

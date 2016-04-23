@@ -1,6 +1,6 @@
 ---
 layout: post
-title: hello
+title: 3班极限编程题目
 subtitle: "Hi, let's shake the world"
 author: "Shadow"
 avatar: "image/IMG_2916.jpg"

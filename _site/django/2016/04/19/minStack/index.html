@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404</title>
+<title>min stack-java</title>
 <meta name="description" content="stay hungry,stay foolish">
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -70,54 +70,131 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="container-fluid index error">
+      
+
+<div class="container-fluid single">
   <div class="row">
 
-    <div class="col-md-12 content-panel articles">
-      <h1 class="header author-header">404</h1>
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="" alt="Thumbnail: jekyll" />
+      </div>
+      
 
-      <div class="error-text">
-        Sorry but this page doesn't seem to exist.
+      <h1 class="header" itemprop="name">min stack-java</h1>
+
+      <div class="author">
+        <small><i>
+          
+          by
+          <span itemprop="author">
+            
+              <a rel="author" href="https://plus.google.com/u/0/115616945666848752661">
+            
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">shadow</span>
+            </span>
+            
+              </a>
+            
+          </span>
+          
+          on <span itemprop="datePublished" content="2014-08-28">April 19, 2016</span>
+           under django
+        </i></small>
       </div>
 
-      <div class="error-text">
-        <a href="/">Home</a> |
-        <a href="/posts/">All Posts</a> |
-        <a href="/search/">Search</a>
+      <div class="read-time">
+        <small>
+          1 minute read
+        </small>
       </div>
 
-      <p class="links">
-  <a href="http://www.twitter.com/" target="_new"><i class="fa fa-twitter"></i></a>
-  <a href="https://shadow625.github.io" target="_new"><i class="fa fa-linkedin"></i></a>
-  <a href="https://plus.google.com/u/0/115616945666848752661" target="_new"><i class="fa fa-google-plus"></i></a>
-  <a href="https://github.com/shadow625" target="_new"><i class="fa fa-github-alt"></i></a>
-  <a href="http://stackoverflow.com/users/5461353/shadow" target="_new"><i class="fa fa-stack-overflow"></i></a>
-  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
-</p>
+      <div class="content-panel content">
+        <span itemprop="articleBody"><h3 id="x00">0X00:问题描述</h3>
 
+<h3 id="x01minstack-br">0X01:minstack <br /></h3>
+<p>可以为每一个元素设置一个额外属性 min
+每当进行一次压栈操作时，将压入的元素值与当前栈顶元素的min属性比较，求取最小的座位当前元素的min属性值
+这样可以保证每次需要知道当前栈内最小元素的时候只需一次就可以求解得到，实现难度也较低<br /></p>
+
+<h3 id="x02">0X02:具体结构分析</h3>
+<p>	 </p>
+<p>首先在栈对象初始化时 创建一个entry对象 head 作为栈的第一个元素 也是栈的结束标志当entry的next为空时说明栈已到底<br />		
+<strong>1.push：</strong>
+输入一个元素x 使用entry（int x，entry next）构造一个entry对象 将x输入为她的num  next输入为她的next
+剩下一个min 最小值的比较与存储 由于我们的数据结构 所以只需要比较栈顶第二个元素的min和当前元素（即栈顶元素）的num 取较小的即可 但是会存在一些特殊情况 当栈为空时 加入一个新元素  <br /><br />
+<strong>2.pop ：</strong>
+希望弹出一个元素，则可以直接将当前的head变成head.next 当栈为空时则弹出0<br /><br />
+<strong>3.getmin ：</strong>
+到了这个问题的核心了，这也是这个数据结构设计的原因所在，得到当前的最小值，即直接输出head.min。</p>
+
+<h3 id="x03">0x03:代码实现</h3>
+<p>哇咔咔 这里贴上我的JAVA代码实现，不知道为什么，速度要比C/C++ 快很多，大神知道的留个言，多谢指导。</p>
+</span>
+
+        
+        <div class="share">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+          <div class="addthis_sharing_toolbox"></div>
+        </div>
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            thumbnails, shadow grand
+          </small>
+        </div>
+        
+
+      </div>
+
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on <a href="http://weibo.com/3882071257/profile"><i class="fa fa-weibo"></i>weibo</a> or leave a comment below!
+      </div>
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      
+
+      
 
     </div>
 
   </div>
 
-  <div class="content-panel related">
-    
-      <div class="related-header">
-        <a href="/django/2016/04/19/minStack/">Suggested Article</a>
-      </div>
-      <div class="title">
-        <a href="/django/2016/04/19/minStack/">min stack-java</a>
-      </div>
-      <div class="excerpt">
-         
-          leetcode 155
-         
-        <a href="/django/2016/04/19/minStack/">Continue Reading</a>
-      </div>
-    
-  </div>
-
 </div>
+
+
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//shadowgrand.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
 
       </div>
     </div>

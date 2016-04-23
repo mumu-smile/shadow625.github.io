@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  android安全狗
+title:  android安全狗-SDK分析
 subtitle: "Android-SDK分析"
 author: "Shadow"
 avatar: "image/IMG_2916.jpg"
