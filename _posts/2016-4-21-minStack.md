@@ -14,6 +14,7 @@ tags:
 ### 0X00:问题描述  
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 it's an algorithm problem from the leetcode 155.  
+
 ### 0X01:minstack <br>
 可以为每一个元素设置一个额外属性 min
 每当进行一次压栈操作时，将压入的元素值与当前栈顶元素的min属性比较，求取最小的座位当前元素的min属性值
