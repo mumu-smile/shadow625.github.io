@@ -416,7 +416,7 @@ ul {
               padding-right: 10px;
               margin-bottom: 40px;
               font-size: 15px; } }
-      .single .article .content p code, .single .article .content ul code, .single .article .content ol code {
+      .single .article .content p code, .single .article .content ul code, .single .article .content ol code, .single .article .content span code {
         font-family: 'Anonymous Pro';
         font-size: 15px;
         background-color: #21211E;

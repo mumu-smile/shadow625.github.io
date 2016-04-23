@@ -5,37 +5,87 @@
     <description>stay hungry,stay foolish</description>
     <link>http://shadow625.github.io//</link>
     <atom:link href="http://shadow625.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 23 Apr 2016 13:49:13 +0800</pubDate>
-    <lastBuildDate>Sat, 23 Apr 2016 13:49:13 +0800</lastBuildDate>
+    <pubDate>Sat, 23 Apr 2016 14:53:05 +0800</pubDate>
+    <lastBuildDate>Sat, 23 Apr 2016 14:53:05 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>min stack-java</title>
         <description>&lt;h3 id=&quot;x00&quot;&gt;0X00:问题描述&lt;/h3&gt;
+&lt;p&gt;  Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+it’s an algorithm problem from the leetcode 155.&lt;/p&gt;
 
 &lt;h3 id=&quot;x01minstack-br&quot;&gt;0X01:minstack &lt;br /&gt;&lt;/h3&gt;
-&lt;p&gt;可以为每一个元素设置一个额外属性 min
-每当进行一次压栈操作时，将压入的元素值与当前栈顶元素的min属性比较，求取最小的座位当前元素的min属性值
+&lt;p&gt;  使用链表实现栈结构&lt;br /&gt;
+  可以为每一个元素设置一个额外属性 &lt;strong&gt;min&lt;/strong&gt;，每当进行一次压栈操作时，将压入的元素值与当前栈顶元素的min属性比较，求取最小的座位当前元素的min属性值&lt;br /&gt;
 这样可以保证每次需要知道当前栈内最小元素的时候只需一次就可以求解得到，实现难度也较低&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;x02&quot;&gt;0X02:具体结构分析&lt;/h3&gt;
-&lt;p&gt;首先在栈对象初始化时 创建一个entry对象 head 作为栈的第一个元素 也是栈的结束标志当entry的next为空时说明栈已到底&lt;br /&gt;		
+&lt;p&gt;  首先在栈对象初始化时 创建一个entry对象 head 作为栈的第一个元素 也是栈的结束标志当entry的next为空时说明栈已到底&lt;br /&gt;		
 &lt;strong&gt;1.push：&lt;/strong&gt;
-输入一个元素x 使用entry（int x，entry next）构造一个entry对象 将x输入为她的num  next输入为她的next
-剩下一个min 最小值的比较与存储 由于我们的数据结构 所以只需要比较栈顶第二个元素的min和当前元素（即栈顶元素）的num 取较小的即可 但是会存在一些特殊情况 当栈为空时 加入一个新元素  &lt;br /&gt;&lt;br /&gt;
+输入一个元素x 使用entry（int x，entry next）构造一个entry对象 将x输入为她的num,next输入为她的next.&lt;br /&gt;
+  剩下一个min,最小值的比较与存储,由于我们的数据结构的特殊性，所以只需要比较栈顶第二个元素的min和当前元素（即栈顶元素）的num取较小的即可。&lt;br /&gt;&lt;br /&gt;
 &lt;strong&gt;2.pop ：&lt;/strong&gt;
 希望弹出一个元素，则可以直接将当前的head变成head.next 当栈为空时则弹出0&lt;br /&gt;&lt;br /&gt;
 &lt;strong&gt;3.getmin ：&lt;/strong&gt;
 到了这个问题的核心了，这也是这个数据结构设计的原因所在，得到当前的最小值，即直接输出head.min。&lt;/p&gt;
 
 &lt;h3 id=&quot;x03&quot;&gt;0x03:代码实现&lt;/h3&gt;
-&lt;p&gt;哇咔咔 这里贴上我的JAVA代码实现，不知道为什么，速度要比C/C++ 快很多，大神知道的留个言，多谢指导。&lt;/p&gt;
+&lt;p&gt;哇咔咔 这里贴上我的JAVA代码实现，不知道为什么，速度要比C/C++ 快很多，大神知道的留个言，多谢指导.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public class minstack {
+	private entry head;
+	public minstack() {
+		// TODO Auto-generated constructor stub
+		head=new entry();
+	}
+	public void push(int x) {
+        head=new entry(x,head);
+    }//压入一个x入栈。
+
+    public void pop() {
+    	if (head.next!=null) {
+    		head=head.next;	
+		}
+    }
+
+    public int top() {
+    	 if (head.next!=null) {
+         	return head.num;
+ 		}
+         return 0;
+    }
+
+    public int getMin() {
+        if (head.next!=null) {
+        	return head.min;
+		}
+        return 0;
+    }
+	class entry {//每个栈元素的类，具有3个属性 ：min最小值、num栈元素所存的数值、next 栈顶第二个元素的对象索引。
+		private int min; 
+ 		private int num=-1;
+		public entry next=null;
+
+		public entry(int num,entry next){
+			this.next=next;
+			this.num=num;	
+			if(next.next!=null&amp;amp;&amp;amp;next.min&amp;lt;=num){//将两个if 压缩为一个，进行min的赋值
+				this.min=next.min;
+			}
+			else{
+				this.min=num;
+			}
+		}
+		public entry(){}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Tue, 19 Apr 2016 20:32:18 +0800</pubDate>
         <link>http://shadow625.github.io//django/2016/04/19/minStack/</link>
         <guid isPermaLink="true">http://shadow625.github.io//django/2016/04/19/minStack/</guid>
         
-        <category>thumbnails</category>
+        <category>leetcode</category>
         
         <category>shadow grand</category>
         
@@ -65,27 +115,27 @@
 后面的事情就很轻松了，如果这个时候你在上面选好了你的界面模板，那就git clone过来，在模板根目录下直接&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll serve&lt;/code&gt;就可以在本地访问你的准博客界面了。
 ##界面定制
 这个我并不是前端专家，但是模板都有了，做一些改动的话还是很轻松的嘛。
-如果你有过django开发经历处理这个就太简单了。他们两个之间的差异很小，上手很容易。现在来介绍一下他的目录结构
-    &lt;pre&gt;&lt;code calss=&quot;html&quot;&gt;.
-  |── _config.yml
-  |── _drafts
-  |   |── begin-with-the-crazy-ideas.textile
-  |   |── on-simplicity-in-technology.markdown
-  |── _includes
-  |   |── footer.html
-  |   |── header.html
-  |── _layouts
-  |   |── default.html
-  |   |── post.html
-  |── _posts
-  |   |── 2007-10-29-why-every-programmer-should-play-nethack.textile
-  |   |── 2009-04-26-barcamp-boston-4-roundup.textile
-  |── _site
-  |── .jekyll-metadata
-  |── index.html
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
+如果你有过django开发经历处理这个就太简单了。他们两个之间的差异很小，上手很容易。现在来介绍一下他的目录结构&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;pre&gt;&lt;code calss=&quot;html&quot;&gt;.
+    |── _config.yml
+    |── _drafts
+    |   |── begin-with-the-crazy-ideas.textile
+    |   |── on-simplicity-in-technology.markdown
+    |── _includes
+    |   |── footer.html
+    |   |── header.html
+    |── _layouts
+    |   |── default.html
+    |   |── post.html
+    |── _posts
+    |   |── 2007-10-29-why-every-programmer-should-play-nethack.textile
+    |   |── 2009-04-26-barcamp-boston-4-roundup.textile
+    |── _site
+    |── .jekyll-metadata
+    |── index.html
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;目录分析&lt;/h3&gt;
 

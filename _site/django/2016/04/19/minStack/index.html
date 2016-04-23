@@ -78,7 +78,7 @@
     <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
       
       <div class="thumb">
-        <img itemprop="image" src="/image/1.jpeg" alt="Thumbnail: jekyll" />
+        <img itemprop="image" src="/image/1.jpeg" alt="Thumbnail: leetcode" />
       </div>
       
 
@@ -113,24 +113,74 @@
 
       <div class="content-panel content">
         <span itemprop="articleBody"><h3 id="x00">0X00:问题描述</h3>
+<p>  Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+it’s an algorithm problem from the leetcode 155.</p>
 
 <h3 id="x01minstack-br">0X01:minstack <br /></h3>
-<p>可以为每一个元素设置一个额外属性 min
-每当进行一次压栈操作时，将压入的元素值与当前栈顶元素的min属性比较，求取最小的座位当前元素的min属性值
+<p>  使用链表实现栈结构<br />
+  可以为每一个元素设置一个额外属性 <strong>min</strong>，每当进行一次压栈操作时，将压入的元素值与当前栈顶元素的min属性比较，求取最小的座位当前元素的min属性值<br />
 这样可以保证每次需要知道当前栈内最小元素的时候只需一次就可以求解得到，实现难度也较低<br /></p>
 
 <h3 id="x02">0X02:具体结构分析</h3>
-<p>首先在栈对象初始化时 创建一个entry对象 head 作为栈的第一个元素 也是栈的结束标志当entry的next为空时说明栈已到底<br />		
+<p>  首先在栈对象初始化时 创建一个entry对象 head 作为栈的第一个元素 也是栈的结束标志当entry的next为空时说明栈已到底<br />		
 <strong>1.push：</strong>
-输入一个元素x 使用entry（int x，entry next）构造一个entry对象 将x输入为她的num  next输入为她的next
-剩下一个min 最小值的比较与存储 由于我们的数据结构 所以只需要比较栈顶第二个元素的min和当前元素（即栈顶元素）的num 取较小的即可 但是会存在一些特殊情况 当栈为空时 加入一个新元素  <br /><br />
+输入一个元素x 使用entry（int x，entry next）构造一个entry对象 将x输入为她的num,next输入为她的next.<br />
+  剩下一个min,最小值的比较与存储,由于我们的数据结构的特殊性，所以只需要比较栈顶第二个元素的min和当前元素（即栈顶元素）的num取较小的即可。<br /><br />
 <strong>2.pop ：</strong>
 希望弹出一个元素，则可以直接将当前的head变成head.next 当栈为空时则弹出0<br /><br />
 <strong>3.getmin ：</strong>
 到了这个问题的核心了，这也是这个数据结构设计的原因所在，得到当前的最小值，即直接输出head.min。</p>
 
 <h3 id="x03">0x03:代码实现</h3>
-<p>哇咔咔 这里贴上我的JAVA代码实现，不知道为什么，速度要比C/C++ 快很多，大神知道的留个言，多谢指导。</p>
+<p>哇咔咔 这里贴上我的JAVA代码实现，不知道为什么，速度要比C/C++ 快很多，大神知道的留个言，多谢指导.</p>
+<pre><code class="java">public class minstack {
+	private entry head;
+	public minstack() {
+		// TODO Auto-generated constructor stub
+		head=new entry();
+	}
+	public void push(int x) {
+        head=new entry(x,head);
+    }//压入一个x入栈。
+
+    public void pop() {
+    	if (head.next!=null) {
+    		head=head.next;	
+		}
+    }
+
+    public int top() {
+    	 if (head.next!=null) {
+         	return head.num;
+ 		}
+         return 0;
+    }
+
+    public int getMin() {
+        if (head.next!=null) {
+        	return head.min;
+		}
+        return 0;
+    }
+	class entry {//每个栈元素的类，具有3个属性 ：min最小值、num栈元素所存的数值、next 栈顶第二个元素的对象索引。
+		private int min; 
+ 		private int num=-1;
+		public entry next=null;
+
+		public entry(int num,entry next){
+			this.next=next;
+			this.num=num;	
+			if(next.next!=null&amp;&amp;next.min&lt;=num){//将两个if 压缩为一个，进行min的赋值
+				this.min=next.min;
+			}
+			else{
+				this.min=num;
+			}
+		}
+		public entry(){}
+	}
+}
+</code></pre>
 </span>
 
         
@@ -144,7 +194,7 @@
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            thumbnails, shadow grand
+            leetcode, shadow grand
           </small>
         </div>
         

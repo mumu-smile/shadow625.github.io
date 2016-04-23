@@ -27,7 +27,8 @@ date:   2016-4-15 12:12:12
 ##界面定制
 这个我并不是前端专家，但是模板都有了，做一些改动的话还是很轻松的嘛。
 如果你有过django开发经历处理这个就太简单了。他们两个之间的差异很小，上手很容易。现在来介绍一下他的目录结构  
-    <pre><code calss="html">.
+
+<pre><code calss="html">.
     |── _config.yml
     |── _drafts
     |   |── begin-with-the-crazy-ideas.textile
