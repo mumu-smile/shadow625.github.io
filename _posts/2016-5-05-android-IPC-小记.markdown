@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      Android项目-UML图试画		
-date:       2016-05-02 12:32:18
+title:      Android进程间通信	
+date:       2016-05-05 12:32:18
 summary:    some imformation about the UML
-categories: UML
-thumbnail: UML
+categories: Android
+thumbnail: Android
 author: "shadow"
 tags:
  - thumbnails
