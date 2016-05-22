@@ -13,7 +13,7 @@ tags:
 
 ### 知识清单
 
-- ryu 北向接口（rest API ）
+- ryu 北向接口（rest API ）[链接](http://ryu.readthedocs.io/en/latest/ryu_app_api.html#ryu-application-programming-model)
 - web
 - [ryu starter -kit](http://sdnhub.org/releases/sdn-starter-kit-ryu/)
 - ​
