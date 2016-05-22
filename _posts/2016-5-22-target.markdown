@@ -14,6 +14,5 @@ tags:
 ### 知识清单
 
 - ryu 北向接口（rest API ）[链接](http://ryu.readthedocs.io/en/latest/ryu_app_api.html#ryu-application-programming-model)
-- web
-- [ryu starter -kit](http://sdnhub.org/releases/sdn-starter-kit-ryu/)
-- ​
+- web(准备一个简单的web程序，提供记录IP功能)
+- GUI 提供拓扑结构展示功能 学习如何使用[ryu starter -kit](http://sdnhub.org/releases/sdn-starter-kit-ryu/)
