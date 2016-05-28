@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>shadow</title>
+<title>Django static 配置</title>
 <meta name="description" content="stay hungry,stay foolish">
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -70,120 +70,150 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="container-fluid index">
-    <div class="row">
+      
 
-        <div class="col-md-12 main content-panel">
+<div class="container-fluid single">
+  <div class="row">
 
-            <div class="gravatar">
-                <img src="image/IMG_2916.jpg" class="img-circle about-image" height="150" width="150" alt="shadow" />
-            </div>
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <i class="fa fa-Django fa-4x"></i>
+      </div>
+      
 
-            <h1 class="header author-header" itemprop="headline"></h1>
+      <h1 class="header" itemprop="name">Django static 配置</h1>
 
-            <div class="author-text">
-               <p>this is a blog record the growth of a single dog</p>
-            </div>
+      <div class="author">
+        <small><i>
+          
+          by
+          <span itemprop="author">
+            
+              <a rel="author" href="http://shadow625.github.io/">
+            
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">shadow</span>
+            </span>
+            
+              </a>
+            
+          </span>
+          
+          on <span itemprop="datePublished" content="2014-08-28">May 26, 2016</span>
+           under Django
+        </i></small>
+      </div>
 
-            <p class="links">
-  <a href="http://user.qzone.qq.com/1498310014" target="_new"><i class="fa fa-qq" aria-hidden="true"></i></a>
-  <a href="http://weibo.com/u/3882071257/home" target="_new"><i class="fa fa-weibo"></i></a>
-  <a href="https://plus.google.com/u/0/115616945666848752661" target="_new"><i class="fa fa-google-plus"></i></a>
-  <a href="https://github.com/shadow625" target="_new"><i class="fa fa-github-alt"></i></a>
-  <a href="http://stackoverflow.com/users/5461353/shadow" target="_new"><i class="fa fa-stack-overflow"></i></a>
-  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
-</p>
+      <div class="read-time">
+        <small>
+          1 minute read
+        </small>
+      </div>
 
-          </div>
-          <div class="col-md-12 main content-panel">
+      <div class="content-panel content">
+        <span itemprop="articleBody"><p>今天通过网页实现了一个数据库添加员工并显示出来，现在来总结一下遇到的问题。</p>
 
-            <div class="articles">
+<h3 id="static">一 static文件添加</h3>
 
-              <h2>Latest Articles</h2>
+<p>以前对于django了解较浅，练习做的网页都是直接将CSS写在HTML文件里面，有不少局限性，真的到实现一个大型网页的时候，这个HTML会变得庞大而不可整理，易读性太差。所以有了需求，就会出来解决方案，django提供static文件机制。通过static机制可以使得模板从服务器的其他（特定）目录寻找CSS、js、image等文件，帮助提升页面的观赏性和功能性。<br />
+  废话不多说，开始介绍这个目录树如图：
+<img src="/image/django_static.png" alt="picture" /></p>
 
-              <ul>
-                  
+<p>可以发现在根目录下有一个与你不一样的文件夹——static文件夹，用于放置你的静态文件（CSS JS Image可以看到static下存在对应的三个文件夹），而他们在各个template中被使用，通过相对路径定位到某一静态文件就可以在HTML中添加这一文件。<br />
+要达到这个功能需要进行一些设定，也就是说，告诉django Server 你的static文件夹放在了哪里。</p>
 
-                      <li>
-                          <a href="/django/2016/05/26/django-static/">Django static 配置</a>
-                          <small class="hidden-xs">May 26, 2016</small>
-                      </li>
+<h4 id="settings-static">1. 在settings 中添加static配置。</h4>
 
-                  
+<pre><code>STATIC_ROOT=os.path.join(BASE_DIR,'static')#指定静态文件的根目录，即就是你的static文件夹的绝对路径。BASE_DIR 是django项目的路径。  
+   STATICFILES_DIRS = (
+   ```
+   ("css", os.path.join(STATIC_ROOT,'css')),
+   ("js", os.path.join(STATIC_ROOT,'js')),
+   ("images", os.path.join(STATIC_ROOT,'images')),)#生成相应文件夹的路径，以方便直接读取。
+   ```
+   STATIC_URL = '/static/' 
 
-                      <li>
-                          <a href="/sdn/2016/05/21/target/">SDN 特战队-target</a>
-                          <small class="hidden-xs">May 21, 2016</small>
-                      </li>
+   </code></pre>
 
-                  
+<h4 id="urlspy-">2. 在urls.py 文件中设置。</h4>
+<p>－ 需要在url_patterns中添加多余一项<br />
+   － 必须先引入settings 上下文，否则会报错。<br />
+   － url(r’^static/(?P<path>.*)$', 'django.views.static.serve',{ 'document_root':settings.STATIC_ROOT }),</path></p>
 
-                      <li>
-                          <a href="/mininet/2016/05/17/mininet-topo/">mininet topo.py 分析</a>
-                          <small class="hidden-xs">May 17, 2016</small>
-                      </li>
+<h4 id="template">3. 在template中引用外部静态文件。</h4>
+<pre><code class="HTML">link rel="stylesheet" href="../static/css/slider.css"&gt;
+</code></pre>
 
-                  
+<p>这基本就是所有需要的设置了。</p>
 
-                      <li>
-                          <a href="/android/2016/05/05/android-IPC-%E5%B0%8F%E8%AE%B0/">Android进程间通信</a>
-                          <small class="hidden-xs">May 5, 2016</small>
-                      </li>
+<p>​</p>
 
-                  
+<p>​</p>
 
-                      <li>
-                          <a href="/uml/2016/05/02/UML-%E5%88%9D%E6%8E%A2/">Android项目-UML图试画</a>
-                          <small class="hidden-xs">May 2, 2016</small>
-                      </li>
+</span>
 
-                  
-
-                      <li>
-                          <a href="/django/2016/04/19/minStack/">min stack-java</a>
-                          <small class="hidden-xs">April 19, 2016</small>
-                      </li>
-
-                  
-
-                      <li>
-                          <a href="/2016/04/15/jekyll-start/">jekyll——安装过程及界面定制</a>
-                          <small class="hidden-xs">April 15, 2016</small>
-                      </li>
-
-                  
-
-                      <li>
-                          <a href="/2016/04/13/subject-ourteam/">3班极限编程题目</a>
-                          <small class="hidden-xs">April 13, 2016</small>
-                      </li>
-
-                  
-
-                      <li>
-                          <a href="/2016/04/05/android-sdksecurity/">android安全狗-SDK分析</a>
-                          <small class="hidden-xs">April 5, 2016</small>
-                      </li>
-
-                  
-
-                      <li>
-                          <a href="/2016/04/03/network-arpspoofing/">network-arp欺骗</a>
-                          <small class="hidden-xs">April 3, 2016</small>
-                      </li>
-
-                  
-                  <li>
-                      <small><i><a href="/posts/">more...</a></i></small>
-                  </li>
-              </ul>
-
-            </div>
-
+        
+        <div class="share">
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+          <div class="addthis_sharing_toolbox"></div>
         </div>
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            thumbnails, shadow grand
+          </small>
+        </div>
+        
+
+      </div>
+
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on <a href="http://weibo.com/3882071257/profile"><i class="fa fa-weibo"></i>weibo</a> or leave a comment below!
+      </div>
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      
+
+      
 
     </div>
+
+  </div>
+
 </div>
+
+
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//shadowgrand.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
 
       </div>
     </div>

@@ -5,16 +5,134 @@
     <description>stay hungry,stay foolish</description>
     <link>http://shadow625.github.io//</link>
     <atom:link href="http://shadow625.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 04 May 2016 01:52:01 +0800</pubDate>
-    <lastBuildDate>Wed, 04 May 2016 01:52:01 +0800</lastBuildDate>
+    <pubDate>Sun, 29 May 2016 00:23:55 +0800</pubDate>
+    <lastBuildDate>Sun, 29 May 2016 00:23:55 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Django static 配置</title>
+        <description>&lt;p&gt;今天通过网页实现了一个数据库添加员工并显示出来，现在来总结一下遇到的问题。&lt;/p&gt;
+
+&lt;h3 id=&quot;static&quot;&gt;一 static文件添加&lt;/h3&gt;
+
+&lt;p&gt;以前对于django了解较浅，练习做的网页都是直接将CSS写在HTML文件里面，有不少局限性，真的到实现一个大型网页的时候，这个HTML会变得庞大而不可整理，易读性太差。所以有了需求，就会出来解决方案，django提供static文件机制。通过static机制可以使得模板从服务器的其他（特定）目录寻找CSS、js、image等文件，帮助提升页面的观赏性和功能性。&lt;br /&gt;
+  废话不多说，开始介绍这个目录树如图：
+&lt;img src=&quot;/image/django_static.png&quot; alt=&quot;picture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以发现在根目录下有一个与你不一样的文件夹——static文件夹，用于放置你的静态文件（CSS JS Image可以看到static下存在对应的三个文件夹），而他们在各个template中被使用，通过相对路径定位到某一静态文件就可以在HTML中添加这一文件。&lt;br /&gt;
+要达到这个功能需要进行一些设定，也就是说，告诉django Server 你的static文件夹放在了哪里。&lt;/p&gt;
+
+&lt;h4 id=&quot;settings-static&quot;&gt;1. 在settings 中添加static配置。&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;STATIC_ROOT=os.path.join(BASE_DIR,&#39;static&#39;)#指定静态文件的根目录，即就是你的static文件夹的绝对路径。BASE_DIR 是django项目的路径。  
+   STATICFILES_DIRS = (
+   ```
+   (&quot;css&quot;, os.path.join(STATIC_ROOT,&#39;css&#39;)),
+   (&quot;js&quot;, os.path.join(STATIC_ROOT,&#39;js&#39;)),
+   (&quot;images&quot;, os.path.join(STATIC_ROOT,&#39;images&#39;)),)#生成相应文件夹的路径，以方便直接读取。
+   ```
+   STATIC_URL = &#39;/static/&#39; 
+
+   &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;urlspy-&quot;&gt;2. 在urls.py 文件中设置。&lt;/h4&gt;
+&lt;p&gt;－ 需要在url_patterns中添加多余一项&lt;br /&gt;
+   － 必须先引入settings 上下文，否则会报错。&lt;br /&gt;
+   － url(r’^static/(?P&lt;path&gt;.*)$&#39;, &#39;django.views.static.serve&#39;,{ &#39;document_root&#39;:settings.STATIC_ROOT }),&lt;/path&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;template&quot;&gt;3. 在template中引用外部静态文件。&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;HTML&quot;&gt;link rel=&quot;stylesheet&quot; href=&quot;../static/css/slider.css&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这基本就是所有需要的设置了。&lt;/p&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 26 May 2016 20:32:18 +0800</pubDate>
+        <link>http://shadow625.github.io//django/2016/05/26/django-static/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//django/2016/05/26/django-static/</guid>
+        
+        <category>thumbnails</category>
+        
+        <category>shadow grand</category>
+        
+        
+        <category>Django</category>
+        
+      </item>
+    
+      <item>
+        <title>SDN 特战队-target</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;知识清单&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ryu 北向接口（rest API ）&lt;a href=&quot;http://ryu.readthedocs.io/en/latest/ryu_app_api.html#ryu-application-programming-model&quot;&gt;链接&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;web(准备一个简单的web程序，提供记录IP功能)&lt;/li&gt;
+  &lt;li&gt;GUI 提供拓扑结构展示功能 学习如何使用&lt;a href=&quot;http://sdnhub.org/releases/sdn-starter-kit-ryu/&quot;&gt;ryu starter -kit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 21 May 2016 20:32:18 +0800</pubDate>
+        <link>http://shadow625.github.io//sdn/2016/05/21/target/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//sdn/2016/05/21/target/</guid>
+        
+        <category>thumbnails</category>
+        
+        <category>shadow grand</category>
+        
+        
+        <category>SDN</category>
+        
+      </item>
+    
+      <item>
+        <title>mininet topo.py 分析</title>
+        <description>
+</description>
+        <pubDate>Tue, 17 May 2016 20:32:18 +0800</pubDate>
+        <link>http://shadow625.github.io//mininet/2016/05/17/mininet-topo/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//mininet/2016/05/17/mininet-topo/</guid>
+        
+        <category>thumbnails</category>
+        
+        <category>shadow grand</category>
+        
+        
+        <category>mininet</category>
+        
+      </item>
+    
+      <item>
+        <title>Android进程间通信</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;进程间通信&lt;/h3&gt;
+&lt;p&gt;作为Android系统中核心的需求，进程间通信显得尤为重要，今天我们从经典Linux的IPC实现说起，进一步分析Android进程间通信方式。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;进程间通信经典实现&lt;/h3&gt;
+&lt;p&gt;1.共享内存：
+原理在于可以创建一个公共可访问的内存区域，两个进程通过这个共享的内存区域进行通讯，所谓的通信，就是变量的存取。例比于两个人通过一个邮箱进行接头，A将信息放置在邮箱中，并查看信箱中是否有自己需要的内容，B从信箱中取出A留下的信息，进行自己的活动。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 05 May 2016 20:32:18 +0800</pubDate>
+        <link>http://shadow625.github.io//android/2016/05/05/android-IPC-%E5%B0%8F%E8%AE%B0/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//android/2016/05/05/android-IPC-%E5%B0%8F%E8%AE%B0/</guid>
+        
+        <category>thumbnails</category>
+        
+        <category>shadow grand</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>Android项目-UML图试画</title>
         <description>&lt;h3 id=&quot;section&quot;&gt;需求分析：&lt;/h3&gt;
 &lt;p&gt;需求就是对期望的行为的表达。需求处理的是对象或实体，他们可能处于的状态，以及用于改变状态或对象特征性的功能。 需求是制定客户需要什么行为，而不是如何实现这些行为。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;1.需求类型&lt;/h3&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;1. 需求类型&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;功能需求&lt;/li&gt;
@@ -23,23 +141,26 @@
   &lt;li&gt;质量需求&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;2.两种需求文档&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;需求定义&lt;/li&gt;
-  &lt;li&gt;需求规格说明&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;2. 两种需求文档&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 需求定义
+- 需求规格说明
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;3.需求的特性&lt;/h3&gt;
+&lt;h3 id=&quot;section-3&quot;&gt;3. 需求的特性&lt;/h3&gt;
 
-&lt;p&gt;下列列出应该检查的特性&lt;br /&gt;
-1. 正确性
+&lt;p&gt;下列列出应该检查的特性&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 正确性
 2. 一致性
 3. 无二义性
 4. 完备性
 5. 可行性
 6. 需求之间是相关的
 7. 可测试性
-8. 可跟踪性&lt;/p&gt;
+8. 可跟踪性  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-4&quot;&gt;4.建模表示法&lt;/h3&gt;
 
@@ -67,6 +188,13 @@
 
 &lt;p&gt;&lt;img src=&quot;/image/UML/use_case_uml.png&quot; alt=&quot;用例图&quot; /&gt;&lt;br /&gt;
 &lt;img src=&quot;/image/UML/seq_uml.png&quot; alt=&quot;时序图&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+	public static void main(String[] args){
+	System.out.println(&quot;hha&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 </description>
         <pubDate>Mon, 02 May 2016 20:32:18 +0800</pubDate>
         <link>http://shadow625.github.io//uml/2016/05/02/UML-%E5%88%9D%E6%8E%A2/</link>
@@ -289,92 +417,6 @@ it’s an algorithm problem from the leetcode 155.&lt;/p&gt;
         <link>http://shadow625.github.io//2016/04/03/network-arpspoofing/</link>
         <guid isPermaLink="true">http://shadow625.github.io//2016/04/03/network-arpspoofing/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>git游记</title>
-        <description>&lt;p&gt;#0x00
- 今天刚换的主题，本想着花两个小时把之前没写好的django补一下，结果发现git一直有问题（问题在于我），于是就弱弱的打开了chrome，进行git补习
- ，看了很多篇文章，从很多个碎片整合出来一个结果，以前理解的git 都不对。
-#0x01
- 现在来说一下我对git的大体理解（极其片面，勿喷）。git 一个版本控制工具，能让你或者你的团队能一起受到制约的共同开发，而github只是一个远程的服务器，
- 进行版本托管的工具。我们需要进行的主要操作就是从远程服务器（即你的github仓库）获取（&lt;code class=&quot;highlighter-rouge&quot;&gt;pull&lt;/code&gt;）代码，或者你把你更改过的代码上传（&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;）到服务器（或者同一个团队的成员）
- 中间会有一些辅助操作
-1.在本地建立控制空间（&lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt;）（新建一个本地仓库，存储下载下来的远程代码）
-2.将你的想要更改的加入到git的一个数据结构中（&lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt;），等待确认提交。
-3.确认提交更改（&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;）只是代码还是在本地，知道执行了push命令。&lt;/p&gt;
-
-&lt;p&gt;现在从头开始一次项目。
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt; 
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add origin git@github.com:shadow625/shadow625.github.io.git&lt;/code&gt;这里就相当于一次赋值过程，将这个远程的github地址赋给origin ，以后origin就代表这个地址，是我们取
-  同步代码等的键击量减少了很多。
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone origin master&lt;/code&gt;这意味着将origin代表的远程仓库的master分支的代码克隆到当前工作目录下。
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;git add A|./&lt;/code&gt; 当你更改代码并在本地进行了测试后 就应该执行这一条指令了，现在还不懂原理，应该是git会把这些可能会被更改的文件存入一个数据结构，或者文件。然后当你确认提交后，就会将这些更改应用到远端&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m “something you wanna say to remind you incase”&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -a&lt;/code&gt;将所有全部提交
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;git push -u origin master&lt;/code&gt; 我遇到的问题就是在这里 由于之前不知道，我就直接使用了git push，然后他就直接将代码同步到他的默认分支：gh-pages
-但是github的博客文件是从master分支下读取的，所以导致我的更改一直没有效。当时都快看疯了，
-  完成了 这就是我的体会了。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 19 Dec 2015 08:04:10 +0800</pubDate>
-        <link>http://shadow625.github.io//2015/12/19/git-log/</link>
-        <guid isPermaLink="true">http://shadow625.github.io//2015/12/19/git-log/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>django_road-session</title>
-        <description>&lt;h1 id=&quot;django&quot;&gt;django笔记&lt;/h1&gt;
-&lt;p&gt;http 建模 ：描述django响应过程。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;web服务器收到一个http请求（Apache 收到一个Post请求，通过什么传给django）&lt;/li&gt;
-  &lt;li&gt;Django 把web服务器传过来的请求转换成一个请求对象。（django将请求转换成request对象）&lt;/li&gt;
-  &lt;li&gt;Django 在 URLconf 里查找正确的视图函数（生成的request对象&amp;lt;中间包括Post/Get消息&amp;gt;传入对应的view文件里的view函数  如home，index ）&lt;/li&gt;
-  &lt;li&gt;调用这个视图函数，参数为请求对象以及任何捕捉到的url 参数（这个视图函数将request进行解析，响应，在这一步进行的有，响应POST消息，查询数据库，并进行返回，动态生成网页：将中间的变量进行填充，渲染返回一个完整的HTML页面，）&lt;/li&gt;
-  &lt;li&gt;然后试图会创建并返回一个响应对象&lt;/li&gt;
-  &lt;li&gt;django讲这个响应对象转换成web服务器可以理解的格式&lt;/li&gt;
-  &lt;li&gt;web服务器将响应发送给客户端。（返回相应的html网页给客户端）
-这个时候：我们有一个问题，如果希望实现登录功能怎么办，django是否提供该功能。
-&amp;gt;事实证明django非常强大，回忆起来当时新建app的时候sync 数据库产生了好几个user group 数据库表，现在才知道，django 将用户与app绑定，进行权限控制，每一个没有经过登录认证的用户被视为anonymous user，可以为每一个用户赋予权限。
-这时候你肯定也产生了另一个疑问，登录认证怎么办，cookie和session应该怎么处理，&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Thu, 17 Dec 2015 20:12:12 +0800</pubDate>
-        <link>http://shadow625.github.io//2015/12/17/django-session/</link>
-        <guid isPermaLink="true">http://shadow625.github.io//2015/12/17/django-session/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>django-road</title>
-        <description>&lt;h3 id=&quot;x00&quot;&gt;0x00：开始接触&lt;/h3&gt;
-&lt;p&gt;在刚开学python时遇到有很多特别火的开源工程，其中有个名字特别古怪，很吸引我的注意，&lt;code class=&quot;highlighter-rouge&quot;&gt;django&lt;/code&gt; 想不通为什么叫这么一个名字，就在网上查了一下，发现是个挺火的项目呢。哦 做网站的，嗯 刚好这两天学了HTML，也想把学的发布到网上。说着就玩起来了，不得不说，配环境是我最烦的了，前前后后总共花了我7天才把环境配好。然后看着网上的简单教程敲了一下，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;./manag.py runserver 0.0.0.0:8080&lt;/code&gt; 。done！ 这样我就可以在手机，各个地方查看我自己的网页了。嗯有的玩，快考试了有时间再看吧。&lt;/p&gt;
-
-&lt;h3 id=&quot;x01-&quot;&gt;0x01： 进一步学习&lt;/h3&gt;
-&lt;p&gt;HERE we come the point that really matter. 
-这两天没事就仔细看了一下&lt;a href=&quot;https://django-book.readthedocs.org/en/latest/index.html&quot;&gt;&lt;em&gt;django book&lt;/em&gt;&lt;/a&gt; &lt;br /&gt;
-第一次写博客，没有什么特别的思路，就把自己对于models的功能的理解写一下。
-根据django的mvc设计模式，models 适用于进行数据的控制的。通过models我们可以简单快速的进行数据库的操作，django book的作者对于这个设计提了很多优点，其中有一个我很赞同&lt;/p&gt;
-
-&lt;p&gt;“Writing Python is fun, and keeping everything in Python limits the number of times your brain has to do a “context switch.” It helps productivity if you keep yourself in a single programming environment/mentality for as long as possible. Having to write SQL, then Python, and then SQL again is disruptive.”&lt;br /&gt;
-经常的进行上下文切换是我一直以来相信也是很多人的苦痛，总是在做完sql然后又忘记python应该怎么写了。通过这个封装使得我没不用去思考sql该怎么写，只要知道要怎么去处理这些数据就可以了。&lt;br /&gt;
-使用models，我们需要先进行install_app 就像是注册一样，类似于Android的permission 声明一样，证明这个app有models等的使用权限。然后再app目录下的models.py 下对声明各个model 然后执行migrate ？？ 将model设置应用到数据库中去。&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 08 Aug 2015 20:32:18 +0800</pubDate>
-        <link>http://shadow625.github.io//django/2015/08/08/django-learning/</link>
-        <guid isPermaLink="true">http://shadow625.github.io//django/2015/08/08/django-learning/</guid>
-        
-        <category>thumbnails</category>
-        
-        <category>shadow grand</category>
-        
-        
-        <category>django</category>
         
       </item>
     
