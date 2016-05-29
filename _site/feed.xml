@@ -5,8 +5,8 @@
     <description>stay hungry,stay foolish</description>
     <link>http://shadow625.github.io//</link>
     <atom:link href="http://shadow625.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 29 May 2016 00:23:55 +0800</pubDate>
-    <lastBuildDate>Sun, 29 May 2016 00:23:55 +0800</lastBuildDate>
+    <pubDate>Mon, 30 May 2016 01:10:05 +0800</pubDate>
+    <lastBuildDate>Mon, 30 May 2016 01:10:05 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -69,18 +69,45 @@
         <description>&lt;h3 id=&quot;section&quot;&gt;知识清单&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;ryu 北向接口（rest API ）&lt;a href=&quot;http://ryu.readthedocs.io/en/latest/ryu_app_api.html#ryu-application-programming-model&quot;&gt;链接&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;web(准备一个简单的web程序，提供记录IP功能)&lt;/li&gt;
-  &lt;li&gt;GUI 提供拓扑结构展示功能 学习如何使用&lt;a href=&quot;http://sdnhub.org/releases/sdn-starter-kit-ryu/&quot;&gt;ryu starter -kit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;(&lt;strong&gt;重点难点&lt;/strong&gt;) ryu 北向接口（rest API ）&lt;a href=&quot;http://ryu.readthedocs.io/en/latest/ryu_app_api.html#ryu-application-programming-model&quot;&gt;链接&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;(&lt;strong&gt;进行中&lt;/strong&gt;) web(准备一个简单的web程序，提供记录IP功能)&lt;/li&gt;
+  &lt;li&gt;(&lt;strong&gt;完成&lt;/strong&gt;）GUI 提供拓扑结构展示功能 学习如何使用&lt;a href=&quot;http://sdnhub.org/releases/sdn-starter-kit-ryu/&quot;&gt;ryu starter -kit&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;当前进度&lt;/h3&gt;
+
+&lt;h4 id=&quot;mininet&quot;&gt;1. 对于mininet的操作。&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;与远程ryu控制器连接&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo mn --controller remote&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;ryu-manager {app-list}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;实现mininet的正确操作，
+  &lt;img src=&quot;/image/mininet/mininet.png&quot; alt=&quot;picture&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;自定义拓扑结构，
+  在mininet文件夹下有一个custom文件夹（并没有强制规定，只要在命令中指定到文件路径即可）默认存放自定义的topo结构等。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo mn --controller remote --custom ./custom/(topo.*).py topo=mytopo&lt;/code&gt;
+  如下是在~/mininet/custom/topo-2h-2s.py 路径下的文件内容，中间我做了修改添加了一个host-h3
+  &lt;img src=&quot;/image/mininet/custom.png&quot; alt=&quot;picture&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ryuapi&quot;&gt;2. ryu北向API的使用。&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;查看ryu文件下的&lt;code class=&quot;highlighter-rouge&quot;&gt;ryu/app/ofctl_rest.py&lt;/code&gt;文件，其详细介绍了ryu北向API的使用，并通过代码定义了openflow 协议。希望大家能仔细看一下注释内容（关于北向API的使用介绍）。流表查看、下发等问题。&lt;/li&gt;
+  &lt;li&gt;ryuAPP的编写，实现简单的web应用（涉及到CGI脚本的理解到Python wsgi）
+大家可以看一下这个文章&lt;a href=&quot;http://www.muzixing.com/pages/2015/05/13/ryuzhong-wsgixue-xi-bi-ji-yu-restapikai-fa.html&quot;&gt;关于wigi 简单网站&lt;/a&gt;
+具体与ryuAPP的切合还没有掌握好，希望有人能做一下。&lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
         <pubDate>Sat, 21 May 2016 20:32:18 +0800</pubDate>
         <link>http://shadow625.github.io//sdn/2016/05/21/target/</link>
         <guid isPermaLink="true">http://shadow625.github.io//sdn/2016/05/21/target/</guid>
         
-        <category>thumbnails</category>
+        <category>SDN</category>
         
-        <category>shadow grand</category>
+        <category>ryu mininet</category>
+        
+        <category>team</category>
         
         
         <category>SDN</category>
@@ -358,17 +385,6 @@ it’s an algorithm problem from the leetcode 155.&lt;/p&gt;
       </item>
     
       <item>
-        <title>3班极限编程题目</title>
-        <description>
-</description>
-        <pubDate>Wed, 13 Apr 2016 09:01:01 +0800</pubDate>
-        <link>http://shadow625.github.io//2016/04/13/subject-ourteam/</link>
-        <guid isPermaLink="true">http://shadow625.github.io//2016/04/13/subject-ourteam/</guid>
-        
-        
-      </item>
-    
-      <item>
         <title>android安全狗-SDK分析</title>
         <description>&lt;h1 id=&quot;androidsdk-&quot;&gt;android第三方SDK 分析初探&lt;/h1&gt;
 
@@ -416,6 +432,38 @@ it’s an algorithm problem from the leetcode 155.&lt;/p&gt;
         <pubDate>Sun, 03 Apr 2016 20:12:12 +0800</pubDate>
         <link>http://shadow625.github.io//2016/04/03/network-arpspoofing/</link>
         <guid isPermaLink="true">http://shadow625.github.io//2016/04/03/network-arpspoofing/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>git游记</title>
+        <description>&lt;p&gt;#0x00
+ 今天刚换的主题，本想着花两个小时把之前没写好的django补一下，结果发现git一直有问题（问题在于我），于是就弱弱的打开了chrome，进行git补习
+ ，看了很多篇文章，从很多个碎片整合出来一个结果，以前理解的git 都不对。
+#0x01
+ 现在来说一下我对git的大体理解（极其片面，勿喷）。git 一个版本控制工具，能让你或者你的团队能一起受到制约的共同开发，而github只是一个远程的服务器，
+ 进行版本托管的工具。我们需要进行的主要操作就是从远程服务器（即你的github仓库）获取（&lt;code class=&quot;highlighter-rouge&quot;&gt;pull&lt;/code&gt;）代码，或者你把你更改过的代码上传（&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;）到服务器（或者同一个团队的成员）
+ 中间会有一些辅助操作
+1.在本地建立控制空间（&lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt;）（新建一个本地仓库，存储下载下来的远程代码）
+2.将你的想要更改的加入到git的一个数据结构中（&lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt;），等待确认提交。
+3.确认提交更改（&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;）只是代码还是在本地，知道执行了push命令。&lt;/p&gt;
+
+&lt;p&gt;现在从头开始一次项目。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt; 
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add origin git@github.com:shadow625/shadow625.github.io.git&lt;/code&gt;这里就相当于一次赋值过程，将这个远程的github地址赋给origin ，以后origin就代表这个地址，是我们取
+  同步代码等的键击量减少了很多。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone origin master&lt;/code&gt;这意味着将origin代表的远程仓库的master分支的代码克隆到当前工作目录下。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git add A|./&lt;/code&gt; 当你更改代码并在本地进行了测试后 就应该执行这一条指令了，现在还不懂原理，应该是git会把这些可能会被更改的文件存入一个数据结构，或者文件。然后当你确认提交后，就会将这些更改应用到远端&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m “something you wanna say to remind you incase”&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -a&lt;/code&gt;将所有全部提交
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;git push -u origin master&lt;/code&gt; 我遇到的问题就是在这里 由于之前不知道，我就直接使用了git push，然后他就直接将代码同步到他的默认分支：gh-pages
+但是github的博客文件是从master分支下读取的，所以导致我的更改一直没有效。当时都快看疯了，
+  完成了 这就是我的体会了。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 19 Dec 2015 08:04:10 +0800</pubDate>
+        <link>http://shadow625.github.io//2015/12/19/git-log/</link>
+        <guid isPermaLink="true">http://shadow625.github.io//2015/12/19/git-log/</guid>
         
         
       </item>
